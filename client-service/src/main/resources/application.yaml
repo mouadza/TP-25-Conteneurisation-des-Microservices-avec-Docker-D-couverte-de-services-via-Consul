@@ -1,0 +1,24 @@
+server:
+  port: 8088  # Port exposé pour le service client dans Docker
+
+spring:
+  application:
+    name: service-client
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql-container1:3306/Micro_ClientDB?createDatabaseIfNotExist=true
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  cloud:
+    consul:
+      host: consul-container
+      port: 8500
+      discovery:
+        enabled: true
